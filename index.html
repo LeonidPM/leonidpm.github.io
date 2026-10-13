@@ -590,22 +590,52 @@
     .section{padding:20px 16px;border-radius:16px;}
     .kpis{grid-template-columns:1fr;}
   }
+
+  .lang-switcher{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:1000;
+    display:flex;
+    gap:4px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:4px;
+    box-shadow:var(--shadow);
+  }
+
+  .lang-btn{
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    background:transparent;
+    color:var(--text-soft);
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+
+  .lang-btn:hover{
+    background:var(--panel-soft);
+  }
+
+  .lang-btn.active{
+    background:var(--primary);
+    color:#fff;
+  }
+
+  .hidden{
+    display:none !important;
+  }
 </style>
 </head>
 <body>
-  <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113223907', 'ym');
-
-    ym(113223907, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/113223907" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+<div class="lang-switcher">
+  <button class="lang-btn active" data-lang="ru">RU</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
 <div class="page">
   <aside class="sidebar">
     <div class="avatar-block">
@@ -616,11 +646,11 @@
     </div>
 
     <div class="identity-block">
-      <h1 class="name">Мостовой Леонид</h1>
-      <div class="role">Senior PHP Backend Engineer | Microservices | System Design</div>
+      <h1 class="name" data-lang="name">Мостовой Леонид</h1>
+      <div class="role" data-lang="role">Senior PHP Backend Engineer | Microservices | System Design</div>
 
       <div class="tags">
-        <span class="tag">Формат работы: удалённо, гибрид</span>
+        <span class="tag" data-lang="work-format">Формат работы: удалённо, гибрид</span>
       </div>
     </div>
 
@@ -628,7 +658,7 @@
 
     <details class="sidebar-section" open>
       <summary class="sidebar-section__summary">
-        <span>Контакты</span>
+        <span data-lang="contacts">Контакты</span>
         <i class="bi bi-chevron-down sidebar-section__chevron" aria-hidden="true"></i>
       </summary>
       <div class="sidebar-section__body">
@@ -642,34 +672,34 @@
 
     <details class="sidebar-section" open>
       <summary class="sidebar-section__summary">
-        <span>Быстрые действия</span>
+        <span data-lang="quick-actions">Быстрые действия</span>
         <i class="bi bi-chevron-down sidebar-section__chevron" aria-hidden="true"></i>
       </summary>
       <div class="sidebar-section__body sidebar-actions">
-        <a class="btn btn-primary" href="https://t.me/leonid_mst" target="_blank" rel="noopener">Написать в Telegram</a>
-        <a class="btn btn-secondary" href="mailto:leurika@yandex.ru">Написать e-mail</a>
-        <a class="btn btn-secondary" href="cv.pdf" download>Скачать резюме</a>
-        <a class="btn btn-secondary" href="https://togliatti.hh.ru/resume/ede5d08bff038d4d140039ed1f32344976484a?print=true" target="_blank" rel="nofollow noopener noreferrer">Посмотреть на hh.ru</a>
+        <a class="btn btn-primary" href="https://t.me/leonid_mst" target="_blank" rel="noopener" data-lang="btn-telegram">Написать в Telegram</a>
+        <a class="btn btn-secondary" href="mailto:leurika@yandex.ru" data-lang="btn-email">Написать e-mail</a>
+        <a class="btn btn-secondary" id="btn-download" href="cv.pdf" download data-lang="btn-download">Скачать резюме</a>
+        <a class="btn btn-secondary" id="btn-hh" href="https://togliatti.hh.ru/resume/ede5d08bff038d4d140039ed1f32344976484a?print=true" target="_blank" rel="nofollow noopener noreferrer" data-lang="btn-hh">Посмотреть на hh.ru</a>
       </div>
     </details>
 
     <details class="sidebar-section" open>
       <summary class="sidebar-section__summary">
-        <span>Образование</span>
+        <span data-lang="education">Образование</span>
         <i class="bi bi-chevron-down sidebar-section__chevron" aria-hidden="true"></i>
       </summary>
       <div class="sidebar-section__body">
         <article class="sidebar-entry">
-          <p class="sidebar-entry__period">2003 · Высшее</p>
-          <p class="sidebar-entry__title">Поволжский государственный университет сервиса</p>
-          <p class="sidebar-entry__line">Технологический факультет (бюджет), «Бытовые машины и приборы» (инженер)</p>
+          <p class="sidebar-entry__period" data-lang="edu-period">2003 · Высшее</p>
+          <p class="sidebar-entry__title" data-lang="edu-title">Поволжский государственный университет сервиса</p>
+          <p class="sidebar-entry__line" data-lang="edu-line">Технологический факультет (бюджет), «Бытовые машины и приборы» (инженер)</p>
         </article>
       </div>
     </details>
 
     <details class="sidebar-section" open>
       <summary class="sidebar-section__summary">
-        <span>Курсы и сертификаты</span>
+        <span data-lang="courses">Курсы и сертификаты</span>
         <i class="bi bi-chevron-down sidebar-section__chevron" aria-hidden="true"></i>
       </summary>
       <div class="sidebar-section__body">
@@ -677,16 +707,16 @@
           <li>
             <article class="sidebar-entry">
               <p class="sidebar-entry__period">2025</p>
-              <p class="sidebar-entry__title">DevOps для эксплуатации и разработки: расширенная версия</p>
-              <p class="sidebar-entry__line">АНО ДПО «Образовательные технологии Яндекса»</p>
+              <p class="sidebar-entry__title" data-lang="course1-title">DevOps для эксплуатации и разработки: расширенная версия</p>
+              <p class="sidebar-entry__line" data-lang="course1-org">АНО ДПО «Образовательные технологии Яндекса»</p>
             </article>
           </li>
           <li>
             <article class="sidebar-entry">
               <p class="sidebar-entry__period">2024</p>
-              <p class="sidebar-entry__title">Школа сильных программистов (CodeNest)</p>
-              <p class="sidebar-entry__line">Анализ Систем · DDD, Анализ бизнес-данных, Анализ требований, Systems Design, Event Storming</p>
-              <p class="sidebar-entry__line"><a href="https://cert.tough-dev.school/VVfwuxijDHhHMMGTjRkwa8/" target="_blank" rel="nofollow noopener noreferrer" style="font-size:0.85rem;color:var(--primary);">Посмотреть сертификат</a></p>
+              <p class="sidebar-entry__title" data-lang="course2-title">Школа сильных программистов (CodeNest)</p>
+              <p class="sidebar-entry__line" data-lang="course2-desc">Анализ Систем · DDD, Анализ бизнес-данных, Анализ требований, Systems Design, Event Storming</p>
+              <p class="sidebar-entry__line"><a href="https://cert.tough-dev.school/VVfwuxijDHhHMMGTjRkwa8/" target="_blank" rel="nofollow noopener noreferrer" style="font-size:0.85rem;color:var(--primary);" data-lang="view-cert">Посмотреть сертификат</a></p>
             </article>
           </li>
         </ul>
@@ -696,31 +726,31 @@
 
   <main class="main">
     <section class="hero" id="about">
-      <h2>Обо мне</h2>
-      <p>
+      <h2 data-lang="about">Обо мне</h2>
+      <p data-lang="about-p1">
         Проектирую и развиваю backend-системы - от отдельных сервисов и API до микросервисной архитектуры: определяю границы сервисов, выстраиваю взаимодействие между ними, проектирую интеграции. Основная специализация - PHP/Symfony, также имею практический опыт разработки сервисов на Node.js и Python.
       </p>
-      <p>
+      <p data-lang="about-p2">
         Могу закрывать backend-задачу практически полностью: от декомпозиции бизнес-требований и проектирования решения до реализации, тестирования, развёртывания и дальнейшего сопровождения в production.
       </p>
-      <p>
+      <p data-lang="about-p3">
         Работаю не только с прикладным кодом, но и с окружением, в котором система работает: контейнеризация, оркестрация, автоматизация развёртывания, мониторинг, логирование и инфраструктура как код.
       </p>
-      <p>
+      <p data-lang="about-p4">
         Есть опыт работы с крупными изменениями в существующих системах: участвовал в миграции Magento 2 с монолитной архитектуры на микросервисную, а также в переносе инфраструктуры и production-баз данных в Google Cloud.
       </p>
-      <p>
+      <p data-lang="about-p5">
         Использую AI-инструменты для ускорения разработки, анализа существующего кода, code review и автоматизации рутинных задач. В том числе разработал собственного AI-агента для генерации и валидации документации Symfony-микросервисов на основе кода проекта.
       </p>
-      <p>
+      <p data-lang="about-p6">
         Основной стек: PHP, Symfony, Magento 2, Node.js, Python, MySQL, PostgreSQL, Redis, RabbitMQ, Kafka, Docker, Kubernetes, Helm, ArgoCD, Terraform, Ansible, ELK, Prometheus, Grafana.
       </p>
-      <p>
+      <p data-lang="about-p7">
         Английский: B1.
       </p>
     </section>
       <section class="section" id="skills">
-          <h2>Навыки</h2>
+          <h2 data-lang="skills">Навыки</h2>
           <div class="skills-grid">
               <span class="skill">PHP 8+</span>
               <span class="skill">Symfony 7+</span>
@@ -774,42 +804,40 @@
       </section>
 
     <section class="section" id="experience">
-      <h2>Стаж</h2>
+      <h2 data-lang="experience">Стаж</h2>
       <div class="timeline">
         <article class="job">
-          <div class="period">Март 2026 - настоящее время · <span data-duration-start="2026-03"></span></div>
-          <h3>Backend Developer (PHP)</h3>
+          <div class="period" data-lang="job1-period">Март 2026 – настоящее время · <span data-duration-start="2026-03"></span></div>
+          <h3 data-lang="job1-title">Backend Developer (PHP)</h3>
           <div class="company">Optimax Dev</div>
-            <p><span>Разрабатываю backend высоконагруженного e-commerce проекта на событийно-ориентированной микросервисной архитектуре.<br>
+            <p data-lang="job1-desc"><span>Разрабатываю backend высоконагруженного e-commerce проекта на событийно-ориентированной микросервисной архитектуре.<br>
               - Разрабатываю и развиваю backend-функциональность на PHP/Symfony в распределённой системе.<br>
               - Участвую в реализации новых бизнес-сценариев с учётом архитектуры существующих микросервисов.<br>
               - Использую AI-инструменты в разработке: поиск и анализ кода, реализация feature workflow и code review.<br>
-              - Создал AI-агента для генерации и валидации документации Symfony-микросервисов непосредственно на основе кода репозитория, с учётом различных архитектурных подходов.<br>
-              <br>
-              Стек - Symfony 7, php 8.2, php8.4, php8.5, kafka</span></p>
+              - Создал AI-агента для генерации и валидации документации Symfony-микросервисов непосредственно на основе кода репозитория, с учётом различных архитектурных подходов.</span></p>
           <div class="stack"><span>Symfony 7</span><span>PHP 8+</span><span>Kafka</span>
               <span>Docker</span><span>Kubernetes</span><span>Helm</span>
               <span>MySQL</span><span>Redis</span></div>
         </article>
 
         <article class="job">
-          <div class="period">Октябрь 2018 - Декабрь 2025 · 7 лет 3 месяца</div>
-          <h3>Senior Backend Developer (PHP, Node.js, Python)</h3>
+          <div class="period" data-lang="job2-period">Октябрь 2018 – Декабрь 2025 · 7 лет 3 месяца</div>
+          <h3 data-lang="job2-title">Senior Backend Developer (PHP, Node.js, Python)</h3>
           <div class="company">KT Team</div>
-            <p>Занимался разработкой и сопровождением приложений для внутренних и клиентских бизнес-систем.</p>
-            <p>Более двух лет работал над созданием микросервисной архитектуры для французской логистической компании (инфраструктура в Google Cloud), ежедневно общался на английском языке с представителями заказчика по техническим вопросам.</p>
-            <p>Участвовал в разработке высоконагруженных решений, включая проекты на Magento 2.</p>
-            <p>Проводил онбординг новых разработчиков, декомпозировал задачи и оценивал сроки, делал код-ревью.</p>
-            <p>Создавал BPMN-схемы.</p>
-            <p>Писал на PHP (Symfony 7, Laravel, Magento 2), Node.js и Python, а также на React.</p>
-            <p>Функциональные и интеграционные тесты создавал на PHPUnit, использовал PHPStan (max level) и PHPCodesniffer, отладку проводил через Xdebug.</p>
-            <p>Локальную разработку вел в Docker, создавал CI/CD для деплоя в staging и production окружения в Kubernetes (в том числе используя Helm).</p>
-            <p>Настраивал ArgoCD для автоматизации доставки приложений на продакшн.</p>
-            <p>Конфигурировал системы логирования и мониторинга (Elasticsearch, Logstash, Kibana, Grafana, Prometheus), Linux, Nginx, писал Bash-скрипты.</p>
-            <p>Реализовывал взаимодействие сервисов через RabbitMQ. Разрабатывал и документировал API (REST, Webhooks, OpenAPI/Swagger).</p>
-            <p>Работал с инфраструктурой как с кодом, используя Terraform и Ansible.</p>
-            <p>Использовал MySQL, PostgreSQL, Redis.</p>
-            <p>Успешно применял Cursor и Windsurf для создания приложения внутренней отчетности на Python, PostgreSQL</p>
+            <p data-lang="job2-desc"><span>Занимался разработкой и сопровождением приложений для внутренних и клиентских бизнес-систем.<br>
+              Более двух лет работал над созданием микросервисной архитектуры для французской логистической компании (инфраструктура в Google Cloud), ежедневно общался на английском языке с представителями заказчика по техническим вопросам.<br>
+              Участвовал в разработке высоконагруженных решений, включая проекты на Magento 2.<br>
+              Проводил онбординг новых разработчиков, декомпозировал задачи и оценивал сроки, делал код-ревью.<br>
+              Создавал BPMN-схемы.<br>
+              Писал на PHP (Symfony 7, Laravel, Magento 2), Node.js и Python, а также на React.<br>
+              Функциональные и интеграционные тесты создавал на PHPUnit, использовал PHPStan (max level) и PHPCodesniffer, отладку проводил через Xdebug.<br>
+              Локальную разработку вел в Docker, создавал CI/CD для деплоя в staging и production окружения в Kubernetes (в том числе используя Helm).<br>
+              Настраивал ArgoCD для автоматизации доставки приложений на продакшн.<br>
+              Конфигурировал системы логирования и мониторинга (Elasticsearch, Logstash, Kibana, Grafana, Prometheus), Linux, Nginx, писал Bash-скрипты.<br>
+              Реализовывал взаимодействие сервисов через RabbitMQ. Разрабатывал и документировал API (REST, Webhooks, OpenAPI/Swagger).<br>
+              Работал с инфраструктурой как с кодом, используя Terraform и Ansible.<br>
+              Использовал MySQL, PostgreSQL, Redis.<br>
+              Успешно применял Cursor и Windsurf для создания приложения внутренней отчетности на Python, PostgreSQL</span></p>
           <div class="stack">
             <span>PHP</span><span>Symfony 5,7</span><span>Laravel</span><span>Magento 2</span>
             <span>Node.js</span><span>Python</span><span>React</span>
@@ -819,55 +847,55 @@
         </article>
 
         <article class="job">
-          <div class="period">Август 2016 - Октябрь 2018 · 2 года 3 месяца</div>
-          <h3>Веб-разработчик</h3>
+          <div class="period" data-lang="job3-period">Август 2016 – Октябрь 2018 · 2 года 3 месяца</div>
+          <h3 data-lang="job3-title">Веб-разработчик</h3>
           <div class="company">Технолайф</div>
-            <p>Разрабатывал и дорабатывал сайты и клиентский функционал на PHP и JavaScript.</p>
-            <p>Работал с Joomla, Bitrix и WordPress.</p>
-            <p>Реализовывал индивидуальные доработки под требования заказчиков.</p>
+            <p data-lang="job3-desc"><span>Разрабатывал и дорабатывал сайты и клиентский функционал на PHP и JavaScript.<br>
+              Работал с Joomla, Bitrix и WordPress.<br>
+              Реализовывал индивидуальные доработки под требования заказчиков.</span></p>
           <div class="stack"><span>PHP</span><span>JS</span><span>Joomla</span><span>Bitrix</span><span>WordPress</span></div>
         </article>
 
         <article class="job">
-          <div class="period">Декабрь 2010 - Ноябрь 2016 · 6 лет</div>
-          <h3>Руководитель | Собственник</h3>
+          <div class="period" data-lang="job4-period">Декабрь 2010 – Ноябрь 2016 · 6 лет</div>
+          <h3 data-lang="job4-title">Руководитель | Собственник</h3>
           <div class="company">ИП Мостовой Л.П.</div>
-            <p>Создал и развивал собственный интернет-магазин.</p>
-            <p>Организовывал операционную работу бизнеса.</p>
-            <p>Разрабатывал и поддерживал собственный интернет-магазин.</p>
-            <p>Параллельно выполнял проекты по разработке сайтов и frontend-разработке для клиентов.</p>
+            <p data-lang="job4-desc"><span>Создал и развивал собственный интернет-магазин.<br>
+              Организовывал операционную работу бизнеса.<br>
+              Разрабатывал и поддерживал собственный интернет-магазин.<br>
+              Параллельно выполнял проекты по разработке сайтов и frontend-разработке для клиентов.</span></p>
           <div class="stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
         </article>
 
         <article class="job">
-          <div class="period">Январь 2011 - Февраль 2013 · 2 года 2 месяца</div>
-          <h3>Генеральный директор</h3>
+          <div class="period" data-lang="job5-period">Январь 2011 – Февраль 2013 · 2 года 2 месяца</div>
+          <h3 data-lang="job5-title">Генеральный директор</h3>
           <div class="company">ЛОГАРТТ, ООО</div>
-            <p>Собственник бизнеса.</p>
-            <p>С нуля организовал работу компании: сформировал команду, выстроил операционные процессы, занимался наймом и управлением сотрудниками, взаимодействием с клиентами и партнёрами, заключением и сопровождением договоров. Самостоятельно принимал решения по текущей деятельности и развитию компании.</p>
+            <p data-lang="job5-desc"><span>Собственник бизнеса.<br>
+              С нуля организовал работу компании: сформировал команду, выстроил операционные процессы, занимался наймом и управлением сотрудниками, взаимодействием с клиентами и партнёрами, заключением и сопровождением договоров. Самостоятельно принимал решения по текущей деятельности и развитию компании.</span></p>
         </article>
 
         <article class="job">
-          <div class="period">Ноябрь 2009 - Октябрь 2010 · 1 год</div>
-          <h3>Руководитель направления 1С</h3>
+          <div class="period" data-lang="job6-period">Ноябрь 2009 – Октябрь 2010 · 1 год</div>
+          <h3 data-lang="job6-title">Руководитель направления 1С</h3>
           <div class="company">ГАРАНТ-ОНЛАЙН</div>
-            <p>Организовывал работу команды разработчиков 1С: декомпозиция и постановка задач, приоритизация, контроль сроков и результатов.</p>
-            <p>Отвечал за создание и развитие корпоративного сайта и его технической инфраструктуры.</p>
-            <p>Участвовал в проектировании и внедрении решений для автоматизации внутренних бизнес-процессов, взаимодействовал с руководителями подразделений и переводил бизнес-задачи в технические требования.</p>
+            <p data-lang="job6-desc"><span>Организовывал работу команды разработчиков 1С: декомпозиция и постановка задач, приоритизация, контроль сроков и результатов.<br>
+              Отвечал за создание и развитие корпоративного сайта и его технической инфраструктуры.<br>
+              Участвовал в проектировании и внедрении решений для автоматизации внутренних бизнес-процессов, взаимодействовал с руководителями подразделений и переводил бизнес-задачи в технические требования.</span></p>
         </article>
       </div>
     </section>
 
     <section class="section" id="languages">
-      <h2>Языки</h2>
+      <h2 data-lang="languages">Языки</h2>
       <div class="skills-grid">
-        <span class="skill">Русский - родной</span>
-        <span class="skill">Английский - B1</span>
+        <span class="skill" data-lang="lang-ru">Русский - родной</span>
+        <span class="skill" data-lang="lang-en">Английский - B1</span>
       </div>
     </section>
 
     <footer class="footer">
-      Мостовой Леонид · Backend Software Engineer (PHP) · Тольятти, Россия ·
+      <span data-lang="footer">Мостовой Леонид · Backend Software Engineer (PHP) · Тольятти, Россия ·</span>
       <a href="mailto:leurika@yandex.ru">leurika@yandex.ru</a> ·
       <a href="https://t.me/leonid_mst" target="_blank" rel="noopener"><i class="bi bi-telegram" aria-hidden="true"></i> @leonid_mst</a>
     </footer>
@@ -917,6 +945,160 @@
   }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 
   sections.forEach((section) => observer.observe(section));
+
+  const translations = {
+    ru: {
+      name: 'Мостовой Леонид',
+      role: 'Senior PHP Backend Engineer | Microservices | System Design',
+      'work-format': 'Формат работы: удалённо, гибрид',
+      contacts: 'Контакты',
+      'quick-actions': 'Быстрые действия',
+      'btn-telegram': 'Написать в Telegram',
+      'btn-email': 'Написать e-mail',
+      'btn-download': 'Скачать резюме',
+      'btn-hh': 'Посмотреть на hh.ru',
+      education: 'Образование',
+      'edu-period': '2003 · Высшее',
+      'edu-title': 'Поволжский государственный университет сервиса',
+      'edu-line': 'Технологический факультет (бюджет), «Бытовые машины и приборы» (инженер)',
+      courses: 'Курсы и сертификаты',
+      'course1-title': 'DevOps для эксплуатации и разработки: расширенная версия',
+      'course1-org': 'АНО ДПО «Образовательные технологии Яндекса»',
+      'course2-title': 'Школа сильных программистов (CodeNest)',
+      'course2-desc': 'Анализ Систем · DDD, Анализ бизнес-данных, Анализ требований, Systems Design, Event Storming',
+      'view-cert': 'Посмотреть сертификат',
+      about: 'Обо мне',
+      'about-p1': 'Проектирую и развиваю backend-системы - от отдельных сервисов и API до микросервисной архитектуры: определяю границы сервисов, выстраиваю взаимодействие между ними, проектирую интеграции. Основная специализация - PHP/Symfony, также имею практический опыт разработки сервисов на Node.js и Python.',
+      'about-p2': 'Могу закрывать backend-задачу практически полностью: от декомпозиции бизнес-требований и проектирования решения до реализации, тестирования, развёртывания и дальнейшего сопровождения в production.',
+      'about-p3': 'Работаю не только с прикладным кодом, но и с окружением, в котором система работает: контейнеризация, оркестрация, автоматизация развёртывания, мониторинг, логирование и инфраструктура как код.',
+      'about-p4': 'Есть опыт работы с крупными изменениями в существующих системах: участвовал в миграции Magento 2 с монолитной архитектуры на микросервисную, а также в переносе инфраструктуры и production-баз данных в Google Cloud.',
+      'about-p5': 'Использую AI-инструменты для ускорения разработки, анализа существующего кода, code review и автоматизации рутинных задач. В том числе разработал собственного AI-агента для генерации и валидации документации Symfony-микросервисов на основе кода проекта.',
+      'about-p6': 'Основной стек: PHP, Symfony, Magento 2, Node.js, Python, MySQL, PostgreSQL, Redis, RabbitMQ, Kafka, Docker, Kubernetes, Helm, ArgoCD, Terraform, Ansible, ELK, Prometheus, Grafana.',
+      'about-p7': 'Английский: B1.',
+      skills: 'Навыки',
+      experience: 'Стаж',
+      'job1-period': 'Март 2026 – настоящее время · ',
+      'job1-title': 'Backend Developer (PHP)',
+      'job1-desc': '<span>Разрабатываю backend высоконагруженного e-commerce проекта на событийно-ориентированной микросервисной архитектуре.<br>- Разрабатываю и развиваю backend-функциональность на PHP/Symfony в распределённой системе.<br>- Участвую в реализации новых бизнес-сценариев с учётом архитектуры существующих микросервисов.<br>- Использую AI-инструменты в разработке: поиск и анализ кода, реализация feature workflow и code review.<br>- Создал AI-агента для генерации и валидации документации Symfony-микросервисов непосредственно на основе кода репозитория, с учётом различных архитектурных подходов.</span>',
+      'job2-period': 'Октябрь 2018 – Декабрь 2025 · 7 лет 3 месяца',
+      'job2-title': 'Senior Backend Developer (PHP, Node.js, Python)',
+      'job2-desc': '<span>Занимался разработкой и сопровождением приложений для внутренних и клиентских бизнес-систем.<br>- Более двух лет работал над созданием микросервисной архитектуры для французской логистической компании (инфраструктура в Google Cloud), ежедневно общался на английском языке с представителями заказчика по техническим вопросам.<br>- Участвовал в разработке высоконагруженных решений, включая проекты на Magento 2.<br>- Проводил онбординг новых разработчиков, декомпозировал задачи и оценивал сроки, делал код-ревью.<br>- Создавал BPMN-схемы.<br>- Писал на PHP (Symfony 7, Laravel, Magento 2), Node.js и Python, а также на React.<br>- Функциональные и интеграционные тесты создавал на PHPUnit, использовал PHPStan (max level) и PHPCodesniffer, отладку проводил через Xdebug.<br>- Локальную разработку вел в Docker, создавал CI/CD для деплоя в staging и production окружения в Kubernetes (в том числе используя Helm).<br>- Настраивал ArgoCD для автоматизации доставки приложений на продакшн.<br>- Конфигурировал системы логирования и мониторинга (Elasticsearch, Logstash, Kibana, Grafana, Prometheus), Linux, Nginx, писал Bash-скрипты.<br>- Реализовывал взаимодействие сервисов через RabbitMQ. Разрабатывал и документировал API (REST, Webhooks, OpenAPI/Swagger).<br>- Работал с инфраструктурой как с кодом, используя Terraform и Ansible.<br>- Использовал MySQL, PostgreSQL, Redis.<br>- Успешно применял Cursor и Windsurf для создания приложения внутренней отчетности на Python, PostgreSQL</span>',
+      'job3-period': 'Август 2016 – Октябрь 2018 · 2 года 3 месяца',
+      'job3-title': 'Веб-разработчик',
+      'job3-desc': '<span>Разрабатывал и дорабатывал сайты и клиентский функционал на PHP и JavaScript.<br>- Работал с Joomla, Bitrix и WordPress.<br>- Реализовывал индивидуальные доработки под требования заказчиков.</span>',
+      'job4-period': 'Декабрь 2010 – Ноябрь 2016 · 6 лет',
+      'job4-title': 'Руководитель | Собственник',
+      'job4-desc': '<span>Создал и развивал собственный интернет-магазин.<br>- Организовывал операционную работу бизнеса.<br>- Разрабатывал и поддерживал собственный интернет-магазин.<br>- Параллельно выполнял проекты по разработке сайтов и frontend-разработке для клиентов.</span>',
+      'job5-period': 'Январь 2011 – Февраль 2013 · 2 года 2 месяца',
+      'job5-title': 'Генеральный директор',
+      'job5-desc': '<span>Собственник бизнеса.<br>- С нуля организовал работу компании: сформировал команду, выстроил операционные процессы, занимался наймом и управлением сотрудниками, взаимодействием с клиентами и партнёрами, заключением и сопровождением договоров. Самостоятельно принимал решения по текущей деятельности и развитию компании.</span>',
+      'job6-period': 'Ноябрь 2009 – Октябрь 2010 · 1 год',
+      'job6-title': 'Руководитель направления 1С',
+      'job6-desc': '<span>Организовывал работу команды разработчиков 1С: декомпозиция и постановка задач, приоритизация, контроль сроков и результатов.<br>- Отвечал за создание и развитие корпоративного сайта и его технической инфраструктуры.<br>- Участвовал в проектировании и внедрении решений для автоматизации внутренних бизнес-процессов, взаимодействовал с руководителями подразделений и переводил бизнес-задачи в технические требования.</span>',
+      languages: 'Языки',
+      'lang-ru': 'Русский - родной',
+      'lang-en': 'Английский - B1',
+      footer: 'Мостовой Леонид · Backend Software Engineer (PHP) · Тольятти, Россия ·'
+    },
+    en: {
+      name: 'Leonid Mostovoi',
+      role: 'Senior PHP Backend Engineer | Microservices | System Design',
+      'work-format': 'Work format: remote, hybrid',
+      contacts: 'Contacts',
+      'quick-actions': 'Quick Actions',
+      'btn-telegram': 'Write on Telegram',
+      'btn-email': 'Send e-mail',
+      education: 'Education',
+      'edu-period': '2003 · Higher',
+      'edu-title': 'Volga State University of Service',
+      'edu-line': 'Technological Faculty (budget), "Household Machines and Appliances" (engineer)',
+      courses: 'Courses and Certificates',
+      'course1-title': 'DevOps for Operations and Development: Extended Version',
+      'course1-org': 'ANO DPO "Yandex Educational Technologies"',
+      'course2-title': 'School of Strong Programmers (CodeNest)',
+      'course2-desc': 'Systems Analysis · DDD, Business Data Analysis, Requirements Analysis, Systems Design, Event Storming',
+      'view-cert': 'View Certificate',
+      about: 'About Me',
+      'about-p1': 'I design and build backend systems, from individual services and APIs to distributed microservice architectures. My work includes defining service boundaries, designing inter-service communication, and building integrations. My primary expertise is in PHP and Symfony, with hands-on experience developing services in Node.js and Python.',
+      'about-p2': 'I take end-to-end ownership of backend delivery, from breaking down business requirements and designing technical solutions to implementation, testing, deployment, and ongoing production support.',
+      'about-p3': 'Beyond application development, I work with the infrastructure and operational tooling required to run reliable systems, including containerization, orchestration, deployment automation, monitoring, logging, and infrastructure as code.',
+      'about-p4': 'I have experience with large-scale system transformations, including the migration of a large Magento 2 monolith to a microservices architecture and the migration of infrastructure and production databases to Google Cloud.',
+      'about-p5': 'I leverage AI tools to accelerate development, analyze existing codebases, support code reviews, and automate repetitive tasks. I also developed a custom AI agent that generates and validates documentation for Symfony microservices based on the project’s source code.',
+      'about-p6': 'Tech stack: PHP, Symfony, Magento 2, Node.js, Python, MySQL, PostgreSQL, Redis, RabbitMQ, Kafka, Docker, Kubernetes, Helm, ArgoCD, Terraform, Ansible, ELK, Prometheus, Grafana.',
+      'about-p7': 'English: B1.',
+      skills: 'Skills',
+      experience: 'Experience',
+      'job1-period': 'March 2026 – Present',
+      'job1-title': 'Backend Developer (PHP)',
+      'job1-desc': '<span>Developing backend systems for a high-traffic e-commerce platform built on an event-driven microservices architecture.<br>- Develop and maintain backend functionality using PHP and Symfony within a distributed system.<br>- Implement new business workflows while accounting for existing microservice boundaries and architectural constraints.<br>- Use AI tools to accelerate development, including codebase exploration, code analysis, feature implementation, and code reviews.<br>- Built a custom AI agent that generates and validates documentation for Symfony microservices directly from source code, taking different architectural approaches into account.</span>',
+      'job2-period': 'October 2018 – December 2025',
+      'job2-title': 'Senior Backend Developer (PHP, Node.js, Python)',
+      'job2-desc': '<span>Developed and maintained backend systems for internal business operations and client-facing applications.<br>- Spent over two years working on the development of a microservices architecture for a French logistics company running on Google Cloud.<br>- Communicated daily in English with client representatives to discuss technical requirements, implementation details, and architectural decisions.<br>- Contributed to high-traffic systems, including e-commerce platforms built on Magento 2.<br>- Onboarded new developers, broke down technical tasks, estimated effort, and conducted code reviews.<br>- Created BPMN diagrams to document business processes and system workflows.<br>- Developed applications and services using PHP (Symfony, Laravel, Magento 2), Node.js, and Python, with additional experience in React.<br>- Wrote unit and integration tests using PHPUnit; applied PHPStan at its maximum analysis level and PHP_CodeSniffer for code quality and standards enforcement.<br>- Used Xdebug for debugging and troubleshooting.<br>- Set up Docker-based local development environments and implemented CI/CD pipelines for deploying applications to staging and production environments on Kubernetes, using Helm.<br>- Configured Argo CD to automate application delivery to production.<br>- Set up logging and monitoring using the ELK Stack, Grafana, and Prometheus.<br>- Administered Linux environments, configured Nginx, and wrote Bash scripts to automate operational tasks.<br>- Implemented asynchronous service-to-service communication using RabbitMQ.<br>- Designed, developed, and documented REST APIs and webhooks using OpenAPI/Swagger.<br>- Managed infrastructure as code using Terraform and Ansible.<br>- Worked with MySQL, PostgreSQL, and Redis.<br>- Used Cursor and Windsurf to build an internal reporting application with Python and PostgreSQL.</span>',
+      'job3-period': 'August 2016 – October 2018',
+      'job3-title': 'Web Developer',
+      'job3-desc': '<span>Developed and enhanced websites and client-specific functionality using PHP and JavaScript.<br>- Worked with Joomla, Bitrix, and WordPress.<br>- Implemented custom features and modifications based on client requirements.</span>',
+      'job4-period': 'December 2010 – November 2016',
+      'job4-title': 'Business Owner | Web Developer',
+      'job4-desc': '<span>Founded and developed an online retail business from the ground up.<br>- Managed day-to-day business operations.<br>- Developed and maintained the company online store.<br>- Delivered website development and frontend development projects for external clients alongside running the business.</span>',
+      'job5-period': 'January 2011 – February 2013',
+      'job5-title': 'Founder & Managing Director',
+      'job5-desc': '<span>Founded and built the business from the ground up.<br>- Established the team and operational processes.<br>- Managed recruitment, employee relations, and day-to-day business operations.<br>- Managed relationships with clients and business partners, including contract negotiation and management.<br>- Made key decisions regarding the company\'s operations and business development.</span>',
+      'job6-period': 'November 2009 – October 2010',
+      'job6-title': 'Head of 1C Development',
+      'job6-desc': '<span>Organized and coordinated the work of the 1C development team, including task breakdown, assignment, prioritization, and tracking of deadlines and deliverables.<br>- Oversaw the development and ongoing maintenance of the corporate website and its technical infrastructure.<br>- Contributed to the design and implementation of solutions to automate internal business processes.<br>- Worked with department heads to translate business needs into technical requirements.</span>',
+      languages: 'Languages',
+      'lang-ru': 'Russian - native',
+      'lang-en': 'English - B1',
+      footer: 'Leonid Mostovoi · Backend Software Engineer (PHP) · Togliatti, Russia ·'
+    }
+  };
+
+  let currentLang = 'ru';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const langData = translations[lang];
+
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.dataset.lang;
+      if (langData[key]) {
+        el.innerHTML = langData[key];
+      }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    const btnDownload = document.getElementById('btn-download');
+    const btnHh = document.getElementById('btn-hh');
+
+    if (lang === 'en') {
+      btnDownload.classList.add('hidden');
+      btnHh.classList.add('hidden');
+    } else {
+      btnDownload.classList.remove('hidden');
+      btnHh.classList.remove('hidden');
+    }
+
+    localStorage.setItem('lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.dataset.lang);
+    });
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const savedLang = localStorage.getItem('lang');
+
+  if (urlLang && (urlLang === 'ru' || urlLang === 'en')) {
+    setLanguage(urlLang);
+  } else if (savedLang && (savedLang === 'ru' || savedLang === 'en')) {
+    setLanguage(savedLang);
+  }
 </script>
 </body>
 </html>
